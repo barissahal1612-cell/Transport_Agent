@@ -1,0 +1,34 @@
+{
+  "name": "LogisticAI",
+  "version": 2,
+  "managedBy": "CDK",
+  "runtimes": [
+    {
+      "name": "agent",
+      "build": "CodeZip",
+      "modelProvider": "Bedrock",
+      "entrypoint": "main.py",
+      "codeLocation": "app/agent",
+      "runtimeVersion": "PYTHON_3_14",
+      "protocol": "HTTP",
+      "envVars": [
+        {
+          "name": "UNIFIED_TRACES_DESTINATION_ENABLED",
+          "value": "true"
+        }
+      ],
+      "authorizerType": "CUSTOM_JWT",
+      "authorizerConfiguration": {
+        "customJwtAuthorizer": {
+          "discoveryUrl": "https://cognito-idp.REGION_PLACEHOLDER.amazonaws.com/POOL_ID_PLACEHOLDER/.well-known/openid-configuration",
+          "allowedClients": [
+            "APP_CLIENT_ID_PLACEHOLDER"
+          ]
+        }
+      },
+      "requestHeaderAllowlist": [
+        "Authorization"
+      ]
+    }
+  ]
+}

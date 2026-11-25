@@ -1,0 +1,20 @@
+[project]
+name = "logistic-ai-streamlit-client"
+version = "0.1.0"
+description = "Streamlit client for Logistics AI Assistant"
+requires-python = ">=3.12"
+dependencies = [
+    "streamlit >= 1.40.0",
+    "requests >= 2.32.0",
+    "PyJWT[crypto] >= 2.8.0, < 3.0.0",
+    "logistic-ai-shared-auth",
+]
+
+[dependency-groups]
+dev = [
+    "pytest >= 8.0.0",
+    "hypothesis >= 6.100.0",
+]
+
+[tool.uv.sources]
+logistic-ai-shared-auth = { path = "../app/agent/logistic_ai_shared_auth", editable = true }

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling ~= 1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "logistic-ai-shared-auth"
+version = "0.1.0"
+description = "Shared authentication and authorization package for Logistics AI"
+requires-python = ">=3.10"
+dependencies = [
+    "PyJWT[crypto] >= 2.8.0, < 3.0.0",
+    "boto3 >= 1.35.0",
+]
+
+# This package lives inside the Agent_Backend CodeZip (app/agent) and is imported
+# from there at runtime. The Streamlit client installs it editable only: the
+# parent dir (app/agent) goes on sys.path so `import logistic_ai_shared_auth` works.
+[tool.hatch.build.targets.wheel]
+bypass-selection = true
+dev-mode-dirs = [".."]

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "roles": {
+    "SUPPLIER": {
+      "permissions": [
+        "chat:invoke"
+      ]
+    },
+    "MATERIAL_RESPONSIBLE": {
+      "permissions": [
+        "chat:invoke"
+      ]
+    },
+    "TRANSPORT_OFFICE": {
+      "permissions": [
+        "chat:invoke"
+      ]
+    }
+  }
+}
