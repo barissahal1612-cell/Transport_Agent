@@ -36,3 +36,55 @@ def parse_payload(payload: Any) -> tuple[str, str | None, str | None]:
         return "", actor_id, EMPTY_PROMPT_ERROR
 
     return prompt, actor_id, None
+
+
+# --------------------------------------------------------------------------- history
+MAX_HISTORY_MESSAGES = 10
+MAX_HISTORY_CONTENT_CHARS = 2000
+_HISTORY_ROLES = frozenset({"user", "assistant"})
+
+
+def parse_history(payload: Any) -> list[dict[str, str]]:
+    """Return the validated prior chat messages of the current request.
+
+    The history is client supplied and therefore untrusted data: only dicts with
+    ``role`` in {user, assistant} and a non-blank ``str`` content are kept (``system``/
+    ``tool`` roles and anything else are dropped), at most the last
+    ``MAX_HISTORY_MESSAGES`` messages, each truncated to ``MAX_HISTORY_CONTENT_CHARS``.
+    The result strictly alternates user/assistant, starts with ``user`` and ends with
+    ``assistant`` (the new prompt is the next user turn), as the model API requires.
+    A missing or malformed history yields ``[]``; it is never an error.
+    """
+    if not isinstance(payload, dict):
+        return []
+    raw = payload.get("history")
+    if not isinstance(raw, list):
+        return []
+    cleaned: list[dict[str, str]] = []
+    for item in raw:
+        if not isinstance(item, dict):
+            continue
+        role, content = item.get("role"), item.get("content")
+        if not isinstance(role, str) or role not in _HISTORY_ROLES or not isinstance(content, str):
+            continue
+        if not content.strip():
+            continue
+        cleaned.append({"role": role, "content": content[:MAX_HISTORY_CONTENT_CHARS]})
+    cleaned = cleaned[-MAX_HISTORY_MESSAGES:]
+    merged: list[dict[str, str]] = []
+    for msg in cleaned:
+        if not merged and msg["role"] != "user":
+            continue  # must start with a user turn
+        if merged and merged[-1]["role"] == msg["role"]:
+            joined = merged[-1]["content"] + "\n" + msg["content"]
+            merged[-1] = {"role": msg["role"], "content": joined[:MAX_HISTORY_CONTENT_CHARS]}
+        else:
+            merged.append(msg)
+    while merged and merged[-1]["role"] == "user":
+        merged.pop()  # unanswered turn (failed request): the new prompt follows directly
+    return merged
+
+
+def history_to_strands_messages(history: list[dict[str, str]]) -> list[dict[str, Any]]:
+    """Convert validated history to Strands ``Message`` dicts (text blocks only)."""
+    return [{"role": m["role"], "content": [{"text": m["content"]}]} for m in history]

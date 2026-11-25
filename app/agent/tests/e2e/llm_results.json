@@ -1,0 +1,1633 @@
+{
+ "model_id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+ "region": "us-east-1",
+ "bedrock_calls": 224,
+ "temperature": 0.1,
+ "max_tokens": 4096,
+ "generated_at": "2026-11-25T12:32:21Z",
+ "run_notes": [
+  {
+   "at": "2026-11-25T12:30:24Z",
+   "cases": 1,
+   "max_tokens": 4096,
+   "temperature": 0.1,
+   "bedrock_calls": 4
+  },
+  {
+   "at": "2026-11-25T12:32:21Z",
+   "cases": 22,
+   "max_tokens": 4096,
+   "temperature": 0.1,
+   "bedrock_calls": 46
+  }
+ ],
+ "metrics": {
+  "tool_selection": 1.0,
+  "arg_accuracy": 1.0,
+  "missing_key_clarification": 1.0,
+  "followup_success": 1.0,
+  "hallucination_free": 1.0,
+  "counts": {
+   "single": 60,
+   "missing_key": 24,
+   "followup": 10,
+   "hallucination": 4
+  }
+ },
+ "cases": [
+  {
+   "id": "get_truck_location-tr-1",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2002267103"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2002267103"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_location-tr-2",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267202"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267202"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_location-tr-3",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267207"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267207"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_location-tr-4",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267212"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267212"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_location-tr-5",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267220"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267220"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_location-en-1",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2002267114"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2002267114"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_location-en-2",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267203"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267203"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_location-en-3",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267208"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267208"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_location-en-4",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267215"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267215"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_location-en-5",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267257"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267257"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-tr-1",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00519869950E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00519869950E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-tr-2",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00520351950E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00520351950E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-tr-3",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00520653720E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00520653720E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-tr-4",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "07357978370E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "07357978370E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-tr-5",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "07358033660E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "07358033660E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-en-1",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00519966280E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00519966280E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-en-2",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00520458990E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00520458990E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-en-3",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00522140030E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00522140030E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-en-4",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "07357986910E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "07357986910E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_material_truck_allocation-en-5",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "09808008880E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "09808008880E"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-tr-1",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2002267116"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2002267116"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-tr-2",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267206"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267206"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-tr-3",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267210"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267210"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-tr-4",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267218"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267218"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-tr-5",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "MA2002267177"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "MA2002267177"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-en-1",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267202"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267202"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-en-2",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267209"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267209"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-en-3",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267214"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267214"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-en-4",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267222"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267222"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_route_info-en-5",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "MA2002267195"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "MA2002267195"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 2,
+   "error": false
+  },
+  {
+   "id": "get_delayed_truck-tr-1",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_delayed_truck-tr-2",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_delayed_truck-tr-3",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_delayed_truck-tr-4",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_delayed_truck-tr-5",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_delayed_truck-en-1",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_delayed_truck-en-2",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_delayed_truck-en-3",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_delayed_truck-en-4",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_delayed_truck-en-5",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_delayed_truck",
+   "expected_args": {},
+   "actual_tool": "get_delayed_truck",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_truck_tobearrived-tr-1",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_tobearrived-tr-2",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_tobearrived-tr-3",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_tobearrived-tr-4",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_tobearrived-tr-5",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_tobearrived-en-1",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_tobearrived-en-2",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_tobearrived-en-3",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_tobearrived-en-4",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_truck_tobearrived-en-5",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_truck_tobearrived",
+   "expected_args": {},
+   "actual_tool": "get_truck_tobearrived",
+   "actual_args": {},
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false
+  },
+  {
+   "id": "get_critical_part_status-tr-1",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "18"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "18"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_critical_part_status-tr-2",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "19"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "19"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_critical_part_status-tr-3",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "25"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "25"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_critical_part_status-tr-4",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "47"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "47"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 2,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_critical_part_status-tr-5",
+   "kind": "single",
+   "lang": "tr",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "73"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "73"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_critical_part_status-en-1",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "25"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "25"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_critical_part_status-en-2",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "18"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "18"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_critical_part_status-en-3",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "73"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "73"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_critical_part_status-en-4",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "19"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "19"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "get_critical_part_status-en-5",
+   "kind": "single",
+   "lang": "en",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "47"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "47"
+   },
+   "status": "ok",
+   "tool_ok": true,
+   "args_ok": true,
+   "n_tool_calls": 1,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "missing-loc-tr-1",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi tırın konumunu öğrenmek istiyorsunuz? Lütfen sefer numarası (shipment_id) veriniz.",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-loc-tr-2",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi aracın (sefer numarası) güncel konumunu öğrenmek istersiniz?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-loc-tr-3",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi sefer numarası (shipment_id) için konumu öğrenmek istersiniz?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-loc-en-1",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Which truck would you like me to look up? Please provide the shipment ID (for example: FA2002267103).",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-loc-en-2",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "I'd be happy to help you find your shipment's current location. Could you please provide the shipment ID (for example: FA2002267103)?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-loc-en-3",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi sefer numarası (shipment_id) için takip etmek istersiniz?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-route-tr-1",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Sefer numarası (shipment_id) tam olarak nedir? Örneğin: FA2002267103",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-route-tr-2",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi sefer numarası (shipment_id) için rota bilgisini almamı istersiniz?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-route-tr-3",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi sefer numarası (shipment_id) için rota bilgisini görmek istersiniz?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-route-en-1",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Which truck/shipment number should I look up? (Please provide the shipment_id, e.g., FA2002267103)",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-route-en-2",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Which shipment number (shipment_id) would you like me to look up? For example: FA2002267103.",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-route-en-3",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "I need the shipment ID (sefer numarası) for your trip to look up the stops. Could you please provide it?\n\nFor example: FA2002267103",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-alloc-tr-1",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi malzeme numarası (materialno) için bakmamı istersiniz?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-alloc-tr-2",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi malzemenin sefer atanmasını kontrol etmemi istersiniz? Lütfen malzeme numarasını (materialno) belirtiniz.",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-alloc-tr-3",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi parçanın (MIP numarası) tırlarla geldiğini öğrenmek istiyorsunuz? Lütfen MIP numarasını belirtiniz.",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-alloc-en-1",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Which material number should I look up?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-alloc-en-2",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Which material number should I look up?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-alloc-en-3",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Which part number (material number) should I look up?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-crit-tr-1",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi MIP numarası için kritik parça durumunu kontrol etmemizi istersiniz?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-crit-tr-2",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Kritik malzemenin durumunu göstermek için MIP numarasına ihtiyacım var.\n\nHangi MIP numarası için kontrol etmemizi istersiniz?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-crit-tr-3",
+   "kind": "missing_key",
+   "lang": "tr",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Hangi kritik parçanın durumunu kontrol etmek istersiniz? Lütfen MIP numarasını belirtiniz.",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-crit-en-1",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Which MIP number should I look up?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-crit-en-2",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Which MIP number should I look up?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "missing-crit-en-3",
+   "kind": "missing_key",
+   "lang": "en",
+   "expected_tool": null,
+   "expected_args": {},
+   "actual_tool": null,
+   "actual_args": {},
+   "asked_question": true,
+   "answer": "Which MIP number should I look up?",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "followup-qk-get_truck_location-tr-1",
+   "kind": "followup",
+   "lang": "tr",
+   "followup_kind": "question_then_key",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267205"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267205"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "followup-qk-get_truck_location-en-2",
+   "kind": "followup",
+   "lang": "en",
+   "followup_kind": "question_then_key",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2102267209"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2102267209"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "followup-qk-get_truck_route_info-tr-3",
+   "kind": "followup",
+   "lang": "tr",
+   "followup_kind": "question_then_key",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267211"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267211"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "followup-qk-get_truck_route_info-en-4",
+   "kind": "followup",
+   "lang": "en",
+   "followup_kind": "question_then_key",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267216"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267216"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "followup-qk-get_material_truck_allocation-tr-5",
+   "kind": "followup",
+   "lang": "tr",
+   "followup_kind": "question_then_key",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00520428040E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00520428040E"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "followup-qk-get_material_truck_allocation-en-6",
+   "kind": "followup",
+   "lang": "en",
+   "followup_kind": "question_then_key",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00520830870E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00520830870E"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "followup-qk-get_critical_part_status-tr-7",
+   "kind": "followup",
+   "lang": "tr",
+   "followup_kind": "question_then_key",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "19"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "19"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "followup-qk-get_critical_part_status-en-8",
+   "kind": "followup",
+   "lang": "en",
+   "followup_kind": "question_then_key",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "47"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "47"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false,
+   "run_max_tokens": 4096,
+   "run_at": "2026-11-25T12:32:21Z"
+  },
+  {
+   "id": "followup-kq-get_truck_route_info-tr-9",
+   "kind": "followup",
+   "lang": "tr",
+   "followup_kind": "key_then_question",
+   "expected_tool": "get_truck_route_info",
+   "expected_args": {
+    "shipment_id": "FA2102267203"
+   },
+   "actual_tool": "get_truck_route_info",
+   "actual_args": {
+    "shipment_id": "FA2102267203"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "followup-kq-get_material_truck_allocation-en-10",
+   "kind": "followup",
+   "lang": "en",
+   "followup_kind": "key_then_question",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00520265770E"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00520265770E"
+   },
+   "status": "ok",
+   "ok": true,
+   "error": false
+  },
+  {
+   "id": "notfound-loc-tr",
+   "kind": "not_found",
+   "lang": "tr",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA9999999999"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA9999999999"
+   },
+   "status": "not_found",
+   "invented_identifiers": [],
+   "answer": "FA9999999999 sefer numarasına ait kayıt bulunamadı. Lütfen sefer numarasını kontrol edip tekrar deneyiniz.",
+   "ok": true
+  },
+  {
+   "id": "notfound-alloc-en",
+   "kind": "not_found",
+   "lang": "en",
+   "expected_tool": "get_material_truck_allocation",
+   "expected_args": {
+    "materialno": "00000000000X"
+   },
+   "actual_tool": "get_material_truck_allocation",
+   "actual_args": {
+    "materialno": "00000000000X"
+   },
+   "status": "not_found",
+   "invented_identifiers": [],
+   "answer": "I'll look up which truck is carrying that material.No record found for material 00000000000X. Please verify the material number and try again.",
+   "ok": true
+  },
+  {
+   "id": "notfound-crit-tr",
+   "kind": "not_found",
+   "lang": "tr",
+   "expected_tool": "get_critical_part_status",
+   "expected_args": {
+    "mip": "99999"
+   },
+   "actual_tool": "get_critical_part_status",
+   "actual_args": {
+    "mip": "99999"
+   },
+   "status": "not_found",
+   "invented_identifiers": [],
+   "answer": "MIP 99999 için kayıt bulunamadı. Lütfen MIP numarasını kontrol edip tekrar deneyiniz.",
+   "ok": true
+  },
+  {
+   "id": "forbidden-loc-en",
+   "kind": "forbidden",
+   "lang": "en",
+   "expected_tool": "get_truck_location",
+   "expected_args": {
+    "shipment_id": "FA2002267103"
+   },
+   "actual_tool": "get_truck_location",
+   "actual_args": {
+    "shipment_id": "FA2002267103"
+   },
+   "status": "forbidden",
+   "invented_identifiers": [],
+   "answer": "You do not have permission for this operation.",
+   "ok": true
+  }
+ ]
+}

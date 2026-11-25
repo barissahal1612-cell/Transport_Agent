@@ -1,9 +1,8 @@
-"""Chatbot_Home_Screen (Req 5.1-5.5, 7.1, 7.2, 7.4, 13.5-13.8).
+"""Chat screen (Req 2.6, 2.8, 2.10).
 
-The screen is a skeleton: exactly one chat history area (empty on first open),
-exactly one message input and a persistent notice that AI answers are not yet
-available. Messages are sent to the Agent_Backend through ``AgentCoreClient``
-with the session's Cognito access token as Bearer token.
+Exactly one chat history area (empty on first open) and one message input.
+Messages are sent to the Agent_Backend through ``AgentCoreClient`` together
+with the session's Session_Token.
 """
 from __future__ import annotations
 
@@ -24,8 +23,8 @@ from logistic_ai.ui.deps import AppDeps
 
 _LOGGER = logging.getLogger("logistic_ai.ui.home")
 
-AI_UNAVAILABLE_MESSAGE = "Yapay zekâ yanıtları henüz kullanılamıyor"
 LOGOUT_LABEL = "Çıkış"
+NEW_CHAT_LABEL = "Yeni sohbet"
 CHAT_INPUT_PLACEHOLDER = "Mesajınızı yazın"
 EMPTY_RESPONSE_MESSAGE = "Yanıt alınamadı."
 
@@ -48,6 +47,12 @@ def _runtime_session_id() -> str:
     return str(st.session_state[KEY_CHAT_SESSION_ID])
 
 
+def _new_chat() -> list[dict[str, str]]:
+    """Start a new conversation: empty history and a fresh runtime session id (no logout)."""
+    st.session_state.pop(KEY_CHAT_HISTORY, None)
+    return _history()
+
+
 def _redirect_to_login(message: str | None = None) -> None:
     """Drop chat leftovers and rerun; the router then shows the Login_Screen."""
     st.session_state.pop(KEY_CHAT_SESSION_ID, None)
@@ -65,28 +70,22 @@ def _handle_logout(deps: AppDeps) -> None:
     _redirect_to_login()
 
 
-def _ask_agent(deps: AppDeps, prompt: str) -> str:
+def _ask_agent(deps: AppDeps, prompt: str, history: list[dict[str, str]] | None = None) -> str:
     """Send ``prompt`` and return the full answer text.
 
-    Raises ``SessionInvalid`` when the session can no longer be used and
-    ``AgentCoreError`` for network/timeouts/unexpected responses.
+    Raises ``SessionInvalid`` when the backend rejects the Session_Token (no
+    refresh: the user signs in again) and ``AgentCoreError`` for
+    network/timeouts/unexpected responses.
     """
     deps.session.touch()
     view = deps.session.require_valid_session()
     session_id = _runtime_session_id()
-    token = view.access_token
-    refreshed = False
-    while True:
-        try:
-            chunks = deps.agent_client.invoke(token, prompt, view.username, session_id)
-            return "".join(chunks).strip() or EMPTY_RESPONSE_MESSAGE
-        except AgentCoreUnauthorized:
-            if refreshed:
-                # Still rejected after the single refresh attempt (Req 13.7).
-                deps.session.logout()
-                raise SessionInvalid("agent_unauthorized") from None
-            refreshed = True
-            token = deps.session.refresh_for_agent_call()  # raises SessionInvalid
+    try:
+        chunks = deps.agent_client.invoke(view.session_token, prompt, session_id, history=history)
+        return "".join(chunks).strip() or EMPTY_RESPONSE_MESSAGE
+    except AgentCoreUnauthorized:
+        deps.session.logout()
+        raise SessionInvalid("agent_unauthorized") from None
 
 
 def render_home(deps: AppDeps) -> None:
@@ -100,18 +99,18 @@ def render_home(deps: AppDeps) -> None:
     history = _history()
 
     # Header: full username, role next to it, logout in the visible area.
-    name_col, role_col, logout_col = st.columns([4, 3, 1])
+    name_col, role_col, new_col, logout_col = st.columns([4, 3, 2, 1])
     with name_col:
         st.text(user.username)
     with role_col:
-        st.text(user.role.value)
+        st.text(user.role)
+    with new_col:
+        if st.button(NEW_CHAT_LABEL, key="new_chat_button"):
+            history = _new_chat()
     with logout_col:
         if st.button(LOGOUT_LABEL, key="logout_button"):
             _handle_logout(deps)
             return
-
-    # Persistent notice while AI integration is disabled (Req 5.5).
-    st.info(AI_UNAVAILABLE_MESSAGE)
 
     # Single chat history area, empty on first open (Req 5.4).
     chat_area = st.container()
@@ -132,7 +131,7 @@ def render_home(deps: AppDeps) -> None:
         try:
             with st.chat_message("assistant"):
                 with st.spinner("..."):
-                    answer = _ask_agent(deps, prompt)
+                    answer = _ask_agent(deps, prompt, list(history))
                 st.text(answer)
         except SessionInvalid as exc:
             _redirect_to_login(getattr(exc, "user_message", SESSION_ENDED_MESSAGE))

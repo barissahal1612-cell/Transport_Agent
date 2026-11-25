@@ -34,6 +34,7 @@ class AuditLogger(Protocol):
     def log_authorization_denied(
         self, username: str, role: str | None, permission: str
     ) -> None: ...
+    def log_lockout(self, username: str) -> None: ...
 
 
 def _is_forbidden(key: object) -> bool:
@@ -128,5 +129,12 @@ class JsonAuditLogger:
                 clock=self._clock,
                 role=role,
                 permission=permission,
+            )
+        )
+
+    def log_lockout(self, username: str) -> None:
+        self._emit(
+            build_audit_record(
+                "account_lockout", username, clock=self._clock, reason="too_many_failures"
             )
         )

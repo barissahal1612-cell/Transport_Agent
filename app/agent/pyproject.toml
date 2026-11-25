@@ -14,12 +14,19 @@ dependencies = [
     "strands-agents >= 1.62.0, < 2.0.0",
     "PyJWT[crypto] >= 2.8.0, < 3.0.0",
     "boto3 >= 1.35.0",
+    "argon2-cffi >= 23.1.0",
 ]
 
 [dependency-groups]
 dev = [
     "pytest >= 8.0.0",
     "hypothesis >= 6.100.0",
+]
+
+[tool.pytest.ini_options]
+addopts = "-m \"not llm\""
+markers = [
+    "llm: real Bedrock LLM integration tests (need AWS credentials and a model; excluded by default, run with -m llm)",
 ]
 
 [tool.hatch.build.targets.wheel]

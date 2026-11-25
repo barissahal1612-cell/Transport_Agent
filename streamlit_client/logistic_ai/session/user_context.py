@@ -1,13 +1,11 @@
-"""Single user-context interface for future AI components (Req 9.5, 9.6).
+"""Single user-context interface for UI and AI components.
 
-The role comes only from the verified identity held by ``SessionManager``;
+Identity comes only from the server-side session held by ``SessionManager``;
 nothing a client can modify is consulted.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
-
-from logistic_ai_shared_auth.authorization.roles import Role
 
 from logistic_ai.session.manager import SessionInvalid, SessionManager
 
@@ -24,8 +22,9 @@ class NotAuthenticated(Exception):
 
 @dataclass(frozen=True)
 class UserContext:
+    userid: str
     username: str
-    role: Role
+    role: str
 
 
 class UserContextProvider:
@@ -38,4 +37,4 @@ class UserContextProvider:
             view = self._session.require_valid_session()
         except SessionInvalid:
             raise NotAuthenticated() from None
-        return UserContext(username=view.username, role=view.role)
+        return UserContext(userid=view.userid, username=view.username, role=view.role)

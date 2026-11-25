@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling ~= 1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "logistic-ai-data"
+version = "0.1.0"
+description = "Data access, permissions and tools package for Logistics AI"
+requires-python = ">=3.10"
+dependencies = [
+    "boto3 >= 1.35.0",
+    "argon2-cffi >= 23.1.0",
+]
+
+# This package lives inside the Agent_Backend CodeZip (app/agent) and is imported
+# from there at runtime. The Streamlit client installs it editable only: the
+# parent dir (app/agent) goes on sys.path so `import logistic_ai_data` works.
+[tool.hatch.build.targets.wheel]
+bypass-selection = true
+dev-mode-dirs = [".."]

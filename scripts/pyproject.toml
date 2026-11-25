@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling ~= 1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "logistic-ai-scripts"
+version = "0.1.0"
+description = "Offline ingestion tools for Logistics AI (Excel to Data_Store)"
+requires-python = ">=3.12"
+dependencies = [
+    "openpyxl >= 3.1.0",
+    "boto3 >= 1.35.0",
+    "argon2-cffi >= 23.1.0",
+    "logistic-ai-data",
+    "logistic-ai-shared-auth",
+]
+
+[dependency-groups]
+dev = [
+    "pytest >= 8.0.0",
+    "hypothesis >= 6.100.0",
+    "moto[server] >= 5.0.0",  # local DynamoDB for scripts/local (never a runtime dependency)
+]
+
+[tool.uv.sources]
+logistic-ai-data = { path = "../app/agent/logistic_ai_data", editable = true }
+logistic-ai-shared-auth = { path = "../app/agent/logistic_ai_shared_auth", editable = true }
+
+[tool.hatch.build.targets.wheel]
+bypass-selection = true
+dev-mode-dirs = ["."]

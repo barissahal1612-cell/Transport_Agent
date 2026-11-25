@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import concurrent.futures
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Mapping, Protocol, Sequence
 
 ENV_USER_POOL_ID = "LOGISTIC_AI_USER_POOL_ID"
@@ -19,10 +18,13 @@ ENV_AGENT_RUNTIME_ARN = "LOGISTIC_AI_AGENT_RUNTIME_ARN"
 ENV_IDLE_TIMEOUT = "LOGISTIC_AI_IDLE_TIMEOUT_MINUTES"
 ENV_PERMISSIONS_FILE = "LOGISTIC_AI_PERMISSIONS_FILE"
 ENV_COGNITO_ENDPOINT_URL = "LOGISTIC_AI_COGNITO_ENDPOINT_URL"
+# Local mode: chat requests go to a local `agentcore dev` server instead of AgentCore Runtime.
+ENV_LOCAL_AGENT_URL = "LOGISTIC_AI_LOCAL_AGENT_URL"
+LOOPBACK_HOSTS = frozenset({"localhost", "127.0.0.1", "::1"})
 
+# Faz 2 (role_user auth): Cognito pool/client are no longer required. The
+# DynamoDB table names (LOGISTIC_AI_USERS_TABLE, ...) are read by the repositories.
 REQUIRED_VARIABLES: tuple[str, ...] = (
-    ENV_USER_POOL_ID,
-    ENV_APP_CLIENT_ID,
     ENV_AWS_REGION,
     ENV_AGENT_RUNTIME_ARN,
 )
@@ -32,10 +34,6 @@ MIN_IDLE_TIMEOUT_MINUTES = 1
 MAX_IDLE_TIMEOUT_MINUTES = 480
 DEFAULT_FETCH_TIMEOUT_S = 10.0
 SECRET_STORE_ERROR_MESSAGE = "Secret_Store erişim hatası"
-
-# streamlit_client/logistic_ai/config/settings.py -> Logistic_AI/
-_PROJECT_ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_PERMISSIONS_FILE = _PROJECT_ROOT / "config" / "permissions.json"
 
 
 class ConfigError(Exception):
@@ -68,15 +66,27 @@ class SecretFetcher(Protocol):
         ...
 
 
+def validate_local_agent_url(url: str) -> str:
+    """Return ``url`` if it is an http(s) URL on a loopback host, else raise ``ConfigError``."""
+    from urllib.parse import urlparse
+
+    try:
+        parsed = urlparse(url)
+        host = parsed.hostname
+        parsed.port  # noqa: B018 - raises ValueError on a bad port
+    except ValueError:
+        raise ConfigError([ENV_LOCAL_AGENT_URL]) from None
+    if parsed.scheme not in ("http", "https") or host not in LOOPBACK_HOSTS or parsed.username:
+        raise ConfigError([ENV_LOCAL_AGENT_URL])
+    return url
+
+
 @dataclass(frozen=True)
 class Settings:
-    user_pool_id: str
-    app_client_id: str
     aws_region: str
     agent_runtime_arn: str
-    permissions_file: Path = DEFAULT_PERMISSIONS_FILE
     idle_timeout_minutes: int = DEFAULT_IDLE_TIMEOUT_MINUTES
-    cognito_endpoint_url: str | None = None
+    local_agent_url: str = ""  # non-empty = local mode (loopback only)
 
     def __repr__(self) -> str:  # avoid dumping configuration values into logs
         return "Settings(...)"
@@ -126,30 +136,27 @@ def load_settings(
     Raises ``ConfigError`` naming only the missing/invalid variables, or
     ``SecretStoreError`` if the secret store fails or times out.
     """
+    local_url = _clean(env.get(ENV_LOCAL_AGENT_URL))
+    if local_url:
+        validate_local_agent_url(local_url)
+    # Local mode talks to `agentcore dev`, so no runtime ARN is needed.
+    required = tuple(n for n in REQUIRED_VARIABLES if not (local_url and n == ENV_AGENT_RUNTIME_ARN))
     values = {name: _clean(env.get(name)) for name in REQUIRED_VARIABLES}
 
-    absent = [n for n in REQUIRED_VARIABLES if not values[n]]
+    absent = [n for n in required if not values[n]]
     if absent and secret_fetcher is not None:
         fetched = _fetch_secrets(secret_fetcher, absent, fetch_timeout_s)
         for name in absent:
             values[name] = _clean(fetched.get(name))
 
-    invalid = [n for n in REQUIRED_VARIABLES if not values[n]]
-
-    endpoint = _clean(env.get(ENV_COGNITO_ENDPOINT_URL)) or None
-    if endpoint is not None and not endpoint.lower().startswith("https://"):
-        invalid.append(ENV_COGNITO_ENDPOINT_URL)
+    invalid = [n for n in required if not values[n]]
 
     if invalid:
         raise ConfigError(invalid)
 
-    permissions_raw = _clean(env.get(ENV_PERMISSIONS_FILE))
     return Settings(
-        user_pool_id=values[ENV_USER_POOL_ID],
-        app_client_id=values[ENV_APP_CLIENT_ID],
         aws_region=values[ENV_AWS_REGION],
         agent_runtime_arn=values[ENV_AGENT_RUNTIME_ARN],
-        permissions_file=Path(permissions_raw) if permissions_raw else DEFAULT_PERMISSIONS_FILE,
         idle_timeout_minutes=parse_idle_timeout(env.get(ENV_IDLE_TIMEOUT)),
-        cognito_endpoint_url=endpoint,
+        local_agent_url=local_url,
     )

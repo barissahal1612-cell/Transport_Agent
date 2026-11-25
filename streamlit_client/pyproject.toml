@@ -6,8 +6,11 @@ requires-python = ">=3.12"
 dependencies = [
     "streamlit >= 1.40.0",
     "requests >= 2.32.0",
+    "boto3 >= 1.35.0",
     "PyJWT[crypto] >= 2.8.0, < 3.0.0",
+    "plotly >= 5.24.0",
     "logistic-ai-shared-auth",
+    "logistic-ai-data",
 ]
 
 [dependency-groups]
@@ -18,3 +21,4 @@ dev = [
 
 [tool.uv.sources]
 logistic-ai-shared-auth = { path = "../app/agent/logistic_ai_shared_auth", editable = true }
+logistic-ai-data = { path = "../app/agent/logistic_ai_data", editable = true }
